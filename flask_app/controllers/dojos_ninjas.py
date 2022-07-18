@@ -1,6 +1,6 @@
 from flask_app import app
 from flask import render_template, request, redirect
-from flask_app.models import restaurant
+from flask_app.models import dojo
 
 # VISIBLE ROUTES
 # Redirect from root path
@@ -29,7 +29,6 @@ def show_dojo():
 
 
 
-
 # HIDDEN ROUTES
 
 # Create Dojo
@@ -40,5 +39,5 @@ def process_create_dojo():
 
 # Create Ninja
 @app.route('/process_create_ninja')
-def create_ninja():
+def process_create_ninja():
     return redirect('show_dojo')
