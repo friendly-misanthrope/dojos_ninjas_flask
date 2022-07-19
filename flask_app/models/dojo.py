@@ -2,7 +2,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 
 class Dojo:
 
-    def __init__(self, name):
+    def __init__(self, data):
         self.id = data['id']
         self.name = data['name']
         self.created_at = data['created_at']
@@ -42,8 +42,8 @@ class Dojo:
         for dojo in results:
             ninja = {
                 "id": dojo['ninjas.id'],
-                "fname": dojo['first_name'],
-                "lname": dojo['last_name'],
+                "first_name": dojo['first_name'],
+                "last_name": dojo['last_name'],
                 "age": dojo['age'],
                 "created_at": dojo['ninjas.created_at'],
                 "updated_at": dojo['ninjas.updated_at']
