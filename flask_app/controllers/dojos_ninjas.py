@@ -1,6 +1,6 @@
 from flask_app import app
 from flask import render_template, request, redirect
-from flask_app.models import dojo
+from flask_app.models import dojo, ninja
 
 # VISIBLE ROUTES
 # Redirect from root path
@@ -12,6 +12,7 @@ def home():
 # Dojos Page
 @app.route('/dojos')
 def dojos():
+    dojos = dojo.Dojo.get_all_dojos()
     return render_template('/new_dojo_all_dojos.html')
 
 
@@ -32,8 +33,12 @@ def show_dojo():
 # HIDDEN ROUTES
 
 # Create Dojo
-@app.route('/process_create_dojo')
+@app.route('/process_create_dojo', methods=['POST'])
 def process_create_dojo():
+    data = {
+        "name": request.form['name']
+    }
+    dojo.Dojo.create_dojo(data)
     return redirect('/dojos')
 
 
